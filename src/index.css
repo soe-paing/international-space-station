@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  font-family: 'Nunito', 'Roboto', 'Ubuntu', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.bg-main {
+  background-color: #343541;
+  box-shadow: 0 6px 16px rgba(0,0,0,.5);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
