@@ -2,7 +2,6 @@ import React, { useEffect, useState, useRef } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import "leaflet/dist/leaflet.css"
 import { Icon } from 'leaflet';
-import LiveVideo from './LiveVideo';
 import Footer from './Footer';
 import styled from 'styled-components';
 
@@ -87,8 +86,8 @@ export default function LocationISS() {
                     let data = await (await fetch(`https://api.wheretheiss.at/v1/satellites/25544`)).json();
                     setIss(data)
                     const center = {
-                        lat: data.latitude ? data.latitude : liveLocation[0], // Replace with the desired latitude
-                        lng: data.longitude ? data.longitude : liveLocation[1], // Replace with the desired longitude
+                        lat: data.latitude ? data.latitude : liveLocation[0],
+                        lng: data.longitude ? data.longitude : liveLocation[1],
                     };
                     setLocation([data.latitude ? data.latitude : 0, data.longitude ? data.longitude : 0 ])
                     handlePanTo(center);
@@ -133,8 +132,6 @@ export default function LocationISS() {
                     </MapContainer>
                     <Table issData={issData}/>
                 </div>
-                <h3 className='my-4 text-light'>ISS live Stream ({issData.visibility})</h3>
-                <LiveVideo/>
             </Container>
             <Footer/>
         </>
