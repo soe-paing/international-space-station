@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
     {loading ? (
-        <marquee className="translate-middle text-primary" style={Marquee} >Loading....Please Wait..</marquee>
+        <marquee className="translate-middle text-primary" style={Marquee} >Loading 3D....Please Wait..</marquee>
       ) : [] }
     <CanvasContainer style={{backgroundColor: "#01040c"}}>
       <Canvas camera={{fov: 60, position: [4, 1, 5]}}>

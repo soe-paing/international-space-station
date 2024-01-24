@@ -1,26 +1,9 @@
-import React, { useRef, useEffect } from 'react';
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader';
+import { useGLTF } from '@react-three/drei';
+import React from 'react';
 
-function Model(props) {
-    const group = useRef(new THREE.Group());
-
-  useEffect(() => {
-    const loader = new GLTFLoader();
-
-    loader.load(
-      '/iss/iss.glb',
-      (gltf) => {
-        group.current.add(gltf.scene);
-      },
-      undefined,
-      (error) => {
-        console.error('Error loading GLB model', error);
-      }
-    );
-  }, []);
-
-  return group.current ? <primitive object={group.current} {...props} /> : null;
+function Model( props ) {
+  const { scene } = useGLTF("/iss/iss.glb");
+  return <primitive object={scene} { ...props } />
 }
 
 export default function ISS() {
