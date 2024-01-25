@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import React, { Suspense, useEffect, useState } from 'react'
 import styled from 'styled-components';
 import Earth from './threeD/Earth';
-import ISS from './threeD/iss';
+import Iss from './threeD/Iss';
 
 const CanvasContainer = styled.div`
   width: 100vw;
@@ -38,7 +38,7 @@ export default function Home() {
         <OrbitControls autoRotateSpeed={0.2} zoomSpeed={0.6} panSpeed={0.5} rotateSpeed={0.4}/>
         <Suspense fallback={null}>
           <pointLight color="#f6f3ea" position={[-10000, 1000, 27000]} intensity={3000000000}/>
-          <ISS/>
+          <Iss/>
           <Earth/>
         </Suspense>
       </Canvas>

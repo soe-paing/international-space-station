@@ -23,7 +23,7 @@ export default function Nav() {
   return (
     <nav className="navbar transpNav p-0 pt-1 navbar-expand-sm w-100  mb-5" style={FixNav}>
         <div className='container' style={{maxWidth: 1200}}>
-            <Link className='text-decoration-none' to="/iss/">
+            <Link className='text-decoration-none' to="/international-space-station/">
                 <a className="navbar-brand" href="#">
                     <h5 className='d-inline d-sm-none'>ISS</h5>
                     <h5 className='d-none d-sm-inline' >International Space Station</h5>
@@ -31,17 +31,17 @@ export default function Nav() {
             </Link>
             <div className="navbar nav">
                 <li className="nav-item">
-                    <Link className='text-decoration-none' to="/iss/">
+                    <Link className='text-decoration-none' to="/international-space-station/">
                         <a className="nav-link" href="#">Home</a>
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link className='text-decoration-none' to="/iss/live">
+                    <Link className='text-decoration-none' to="/international-space-station/live">
                         <a className="nav-link" href="#">Live Location</a>
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link className='text-decoration-none' to="/iss/about" >
+                    <Link className='text-decoration-none' to="/international-space-station/about" >
                         <a className="nav-link" href="#">About</a>
                     </Link>
                 </li>

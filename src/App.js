@@ -12,9 +12,9 @@ export default function App() {
       <Router>
         <Nav/>
         <Routes>
-          <Route path='/iss/' element={<Home/>}/>
-          <Route path='/iss/live' element={<LocationISS/>}/>
-          <Route path='/iss/about' element={<About/>}/>
+          <Route path='/international-space-station/' element={<Home/>}/>
+          <Route path='/international-space-station/live' element={<LocationISS/>}/>
+          <Route path='/international-space-station/about' element={<About/>}/>
         </Routes>
       </Router>
     </>

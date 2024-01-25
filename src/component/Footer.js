@@ -7,17 +7,17 @@ export default function Footer() {
         <div className='container border-top border-secondary' style={{maxWidth: 1200}}>
             <div className="navbar nav">
                 <li className="nav-item">
-                    <Link className='text-decoration-none' to="/iss/">
+                    <Link className='text-decoration-none' to="/international-space-station/">
                         <a className="nav-link" href="#">Home</a>
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link className='text-decoration-none' to="/iss/live">
+                    <Link className='text-decoration-none' to="/international-space-station/live">
                         <a className="nav-link" href="#">Live Location</a>
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link className='text-decoration-none' to="/iss/about" >
+                    <Link className='text-decoration-none' to="/international-space-station/about" >
                         <a className="nav-link" href="#">About</a>
                     </Link>
                 </li>

@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css"
 import { Icon } from 'leaflet';
 import Footer from './Footer';
 import styled from 'styled-components';
+import LiveVideo from './LiveVideo';
 
 export const Container = styled.div`
     max-width: 1200px;
@@ -70,7 +71,6 @@ function Table({ issData }) {
 
 export default function LocationISS() {
     const [issData, setIss] = useState({});
-    const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     const mapRef = useRef(null);
     const [liveLocation, setLocation] = useState([ 21.9750 , 96.0836  ]);
     const handlePanTo = (center) => {
@@ -80,31 +80,26 @@ export default function LocationISS() {
     };
 
     useEffect(() => {
-        try {
-            const getISS = () => {
-                setInterval( async () => {
-                    let data = await (await fetch(`https://api.wheretheiss.at/v1/satellites/25544`)).json();
-                    setIss(data)
-                    const center = {
-                        lat: data.latitude ? data.latitude : liveLocation[0],
-                        lng: data.longitude ? data.longitude : liveLocation[1],
-                    };
-                    setLocation([data.latitude ? data.latitude : 0, data.longitude ? data.longitude : 0 ])
-                    handlePanTo(center);
-                }, 1000)
-            };
-            return () => getISS();
-        } catch (error) {
-            if (error.response && error.response.status === 429) {
-                async () => {
-                    await delay(3000);
-                    return makeRequest();
-                }
-              } else {
+        const fetchData = async () => {
+            try {
+                const data = await (await fetch(`https://api.wheretheiss.at/v1/satellites/25544`)).json();
+                setIss(data);
+                const center = {
+                    lat: data.latitude || liveLocation[0],
+                    lng: data.longitude || liveLocation[1],
+                };
+                setLocation([data.latitude || 0, data.longitude || 0])
+                handlePanTo(center);
+            } catch (error) {
                 console.error('Error:', error.message);
-              }
-        }
-    }, []);
+            }
+        };
+    
+        const intervalId = setInterval(fetchData, 1020);
+    
+        return () => clearInterval(intervalId);
+    }, [liveLocation]);
+    
 
     const cusTomIcon = new Icon({
         iconUrl: "https://upload.wikimedia.org/wikipedia/commons/d/d0/International_Space_Station.svg",
@@ -126,12 +121,14 @@ export default function LocationISS() {
                             />
                         <Marker position={liveLocation} icon={cusTomIcon}>
                             <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
+                            The International_Space_Station<br />Average Velocity 27000 km per hour
                             </Popup>
                         </Marker>
                     </MapContainer>
                     <Table issData={issData}/>
                 </div>
+                <h3 className='my-4 text-light'>ISS live Stream ({issData.visibility})</h3>
+                <LiveVideo/>
             </Container>
             <Footer/>
         </>
