@@ -8,6 +8,7 @@ import Iss from './threeD/Iss';
 const CanvasContainer = styled.div`
   width: 100vw;
   height: 100vh;
+  background-color: #01040c;
 `
 
 const Marquee = {
@@ -25,15 +26,15 @@ export default function Home() {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 7000);
+    }, 15000);
   }, []);
 
   return (
     <>
     {loading ? (
-        <marquee className="translate-middle text-primary" style={Marquee} >Loading 3D....Please Wait..</marquee>
+        <marquee className="translate-middle text-primary" style={Marquee} >Loading 3D ISS....Please Wait..</marquee>
       ) : [] }
-    <CanvasContainer style={{backgroundColor: "#01040c"}}>
+    <CanvasContainer>
       <Canvas camera={{fov: 60, position: [4, 1, 5]}}>
         <OrbitControls autoRotateSpeed={0.2} zoomSpeed={0.6} panSpeed={0.5} rotateSpeed={0.4}/>
         <Suspense fallback={null}>
